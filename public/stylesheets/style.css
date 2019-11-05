@@ -17,3 +17,24 @@
     display: block;
     margin-bottom: 10px;
 }
+
+.card {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.card-img-top {
+    margin: 10px;
+    width: 100px;
+    height: 120px;
+}
+
+.cart-bottom-menu {
+    margin-top: 10px;
+}
+
+.cart-total {
+    font-size: 24px;
+    font-weight: bold;
+}

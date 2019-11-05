@@ -3,13 +3,26 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var testimonialsRouter = require('./routes/testimonials');
 var adminPostsRouter = require('./routes/admin/posts');
+var adminProductsRouter = require('./routes/admin/products');
+var productsRouter = require('./routes/products');
+var authRouter = require('./routes/auth');
+var verifyAuth = require('./middlewares/authMiddleware');
+var cartRouter = require('./routes/cart');
 
 var app = express();
+
+app.set('trust proxy', 1);
+app.use(session({
+  secret: 'mySecret123',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,9 +35,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/admin/posts', adminPostsRouter);
-app.use('/users', usersRouter);
+app.use('/auth', authRouter);
+app.use('/cart', cartRouter);
+app.use('/admin/posts', [verifyAuth],  adminPostsRouter);
+app.use('/admin/products', [verifyAuth], adminProductsRouter);
 app.use('/testimonials', testimonialsRouter);
+app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

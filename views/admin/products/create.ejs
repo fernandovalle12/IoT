@@ -10,28 +10,28 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Novo Post</h1>
+        <h1>Novo Produto</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
           <form action="create" method="POST" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="postTitle">Título</label>
-                <input name="title" type="text" class="form-control" id="postTitle" placeholder="Título do post">
+                <label for="productName">Nome</label>
+                <input name="name" type="text" class="form-control" id="productName" placeholder="Nome do produto">
               </div>
               <div class="form-group">
-                <label for="postImage">Imagem</label>
+                <label for="productImage">Imagem</label>
                 <input type="file" name="image" class="form-control" />
               </div>
               <div class="form-group">
-                <label for="postDescription">Descrição</label>
-                <textarea name="description" type="text" class="form-control" id="postDescription" placeholder=""></textarea>
+                <label for="productDescription">Descrição</label>
+                <textarea name="description" type="text" class="form-control" id="productDescription" placeholder=""></textarea>
               </div>
 
               <div class="form-group">
-                <label for="postBody">Corpo do Post</label>
-                <textarea name="postBody" type="text" class="form-control" id="postBody" placeholder=""></textarea>
+                <label for="productPrice">Valor</label>
+                <input name="price" type="number" class="form-control" id="productPrice" placeholder="Valor do produto">
               </div>
               <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
