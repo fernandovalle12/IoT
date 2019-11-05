@@ -1,0 +1,19 @@
+.post-detail img {
+    width: 800px;
+    height: 80px;
+}
+
+.post-detail h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: blue;
+}
+
+.testimony {
+    margin-bottom: 40px;
+}
+
+.testimonial-description {
+    display: block;
+    margin-bottom: 10px;
+}
