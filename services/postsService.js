@@ -18,7 +18,7 @@ var getPosts = function() {
   var posts = loadFilePosts();
   return posts;
 }
-//teste
+
 var savePost = function(newPost) {
   var posts = loadFilePosts();
   posts.push(newPost);
