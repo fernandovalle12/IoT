@@ -6,7 +6,6 @@ var logger = require('morgan');
 var session = require('express-session')
 
 var indexRouter = require('./routes/index');
-// var testimonialsRouter = require('./routes/testimonials');
 var adminPostsRouter = require('./routes/admin/posts');
 var adminProductsRouter = require('./routes/admin/products');
 var sensoresRouter = require('./routes/admin/sensores');
@@ -14,6 +13,7 @@ var productsRouter = require('./routes/products');
 var authRouter = require('./routes/auth');
 var verifyAuth = require('./middlewares/authMiddleware');
 var cartRouter = require('./routes/cart');
+var switchRouter = require('./routes/admin/switches');
 
 var app = express();
 
@@ -38,10 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
-app.use('/admin/posts', [verifyAuth],  adminPostsRouter);
+app.use('/admin/posts', /*[verifyAuth],*/  adminPostsRouter);
 app.use('/admin/products', [verifyAuth], adminProductsRouter);
-app.use('/admin/sensores', [verifyAuth], sensoresRouter);
-// app.use('/testimonials', testimonialsRouter);
+app.use('/admin/switches', [verifyAuth], switchRouter);
 app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler

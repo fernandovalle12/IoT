@@ -1,23 +1,23 @@
 var express = require('express');
 var router = express.Router();
-var postsService = require('../services/postsService');
+var switchesService = require('../services/switchService');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var posts = postsService.getPosts();
+  var switches = switchesService.getSwitches();
 
-  res.render('index', { title: 'Blog', posts: posts });
+  res.render('index', { title: 'Switches', switches: switches });
 });
 
-router.get('/posts/:postId', function(req, res, next) {
-  var postId = req.params.postId;
+// router.get('/posts/:postId', function(req, res, next) {
+//   var postId = req.params.postId;
 
-  var posts = postsService.getPosts();
+//   var posts = postsService.getPosts();
 
-  var post = posts.filter((post) => post.id == postId)[0];
+//   var post = posts.filter((post) => post.id == postId)[0];
 
-  res.render('post', { title: post.title, post: post });
+//   res.render('post', { title: post.title, post: post });
 
-});
+// });
 
 module.exports = router;
