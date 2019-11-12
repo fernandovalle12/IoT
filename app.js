@@ -40,7 +40,7 @@ app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/admin/posts', [verifyAuth],  adminPostsRouter);
 app.use('/admin/products', [verifyAuth], adminProductsRouter);
-app.use('/admin/sensores', /*[verifyAuth],*/ sensoresRouter);
+app.use('/admin/sensores', [verifyAuth], sensoresRouter);
 // app.use('/testimonials', testimonialsRouter);
 app.use('/products', productsRouter);
 
