@@ -41,6 +41,7 @@ app.use('/cart', cartRouter);
 app.use('/admin/posts', /*[verifyAuth],*/  adminPostsRouter);
 app.use('/admin/products', [verifyAuth], adminProductsRouter);
 app.use('/admin/switches', [verifyAuth], switchRouter);
+app.use('/admin/sensores', [verifyAuth], sensoresRouter);
 app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler
