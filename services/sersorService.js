@@ -25,7 +25,21 @@ var saveSensor = function(newSensor) {
   saveFileSensores(sensores);
 }
 
+var update = function(data) {
+  sensores.find()
+  saveFileSensores(sensores);
+}
+
+var addMedicoes = function(id, props) {
+  var sensores = loadFileSensores();
+  var sensor = sensores.find((sensor) => sensor.id == id);
+  sensor.med.push(props);
+  console.log(sensor);
+  saveFileSensores(sensores);
+}
+
 module.exports = {
   getSensores: getSensores,
-  saveSensor: saveSensor
+  saveSensor: saveSensor,
+  addMedicoes: addMedicoes
 }
