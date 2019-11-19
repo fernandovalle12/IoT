@@ -19,13 +19,35 @@ var getSwitches = function() {
   return switches;
 }
 
+var getSwitches = function() {
+  var switches = loadFileSwitches();
+  return switches;
+}
+
 var saveSwitch = function(newSwitch) {
   var switches = loadFileSwitches();
   switches.push(newSwitch);
   saveFileSwitch(switches);
 }
 
+var getEstadoLed = function(id) {
+  var switches = getSwitches();
+  var actuators = switches.find((actuators) => actuators.id == id);
+  return actuators;
+}
+
+var saveNewActuator = function(newParam) {
+  var switches = getSwitches();
+  var actuators = switches.find((actuator) => actuator.id == newParam);
+
+  actuators.status = newParam;
+
+  saveFileSwitch(switches);
+}
+
 module.exports = {
     getSwitches: getSwitches,
-    saveSwitch: saveSwitch
+    saveSwitch: saveSwitch,
+    getEstadoLed: getEstadoLed,
+    saveNewActuator: saveNewActuator
 }

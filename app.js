@@ -10,6 +10,7 @@ var adminPostsRouter = require('./routes/admin/posts');
 var adminProductsRouter = require('./routes/admin/products');
 var sensoresRouter = require('./routes/admin/sensores');
 var productsRouter = require('./routes/products');
+var actuators = require('./routes/actuators');
 var authRouter = require('./routes/auth');
 var verifyAuth = require('./middlewares/authMiddleware');
 var cartRouter = require('./routes/cart');
@@ -43,6 +44,8 @@ app.use('/admin/products', [verifyAuth], adminProductsRouter);
 app.use('/admin/switches', [verifyAuth], switchRouter);
 app.use('/admin/sensores', [verifyAuth], sensoresRouter);
 app.use('/products', productsRouter);
+app.use('/actuators', actuators);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
