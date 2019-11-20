@@ -18,7 +18,8 @@ router.get('/:id', function (req, res, next) {
   var data = JSON.stringify(actuators);
   switchService.saveFileNewStatus(data);
   var switches = switchesService.getSwitches();
-  res.render('', {title: "Switch", switches});
+  // res.render('', {title: "Switch", switches});
+  res.status(200).json({id: actuator.id, name: actuator.title, status: actuator.status});
 });
 
 module.exports = router;
