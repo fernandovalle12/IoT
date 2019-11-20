@@ -1,7 +1,6 @@
 var fs = require('fs');
 
 var switchesFilePath = 'db/switch.json';
-var actuartorsFilePath = 'db/actuators.json'
 
 var loadFileSwitches = function() {
   var fileData = fs.readFileSync(switchesFilePath, 'utf8');
@@ -9,13 +8,6 @@ var loadFileSwitches = function() {
 
   return switches;
 }
-
-// var loadFileActuatorStatus = function() {
-//   var fileData = fs.readFileSync(actuartorsFilePath, 'utf8');
-//   var actuator = JSON.parse(fileData);
-
-//   return actuator;
-// }
 
 var saveFileSwitch = function(switches) {
   var data = JSON.stringify(switches);
@@ -54,6 +46,5 @@ module.exports = {
     saveSwitch: saveSwitch,
     getEstadoLed: getEstadoLed,
     saveFileNewStatus: saveFileNewStatus,
-    // loadFileActuatorStatus: loadFileActuatorStatus,
     loadFileSwitches: loadFileSwitches
 }
