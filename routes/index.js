@@ -6,7 +6,7 @@ var switchesService = require('../services/switchService');
 router.get('/', function(req, res, next) {
   var switches = switchesService.getSwitches();
 
-  res.render('index', { title: 'Switches', switches: switches });
+  res.render('index', { title: 'Switches', switches: switches});
 });
 
 // router.get('/posts/:postId', function(req, res, next) {

@@ -10,12 +10,12 @@ var loadFileSwitches = function() {
   return switches;
 }
 
-var loadFileActuatorStatus = function() {
-  var fileData = fs.readFileSync(actuartorsFilePath, 'utf8');
-  var actuator = JSON.parse(fileData);
+// var loadFileActuatorStatus = function() {
+//   var fileData = fs.readFileSync(actuartorsFilePath, 'utf8');
+//   var actuator = JSON.parse(fileData);
 
-  return actuator;
-}
+//   return actuator;
+// }
 
 var saveFileSwitch = function(switches) {
   var data = JSON.stringify(switches);
@@ -23,7 +23,7 @@ var saveFileSwitch = function(switches) {
 }
 
 var saveFileNewStatus = function(newStatus){
-  fs.writeFileSync(actuartorsFilePath, newStatus, 'utf8');
+  fs.writeFileSync(switchesFilePath, newStatus, 'utf8');
 }
 
 var getSwitches = function() {
@@ -54,5 +54,6 @@ module.exports = {
     saveSwitch: saveSwitch,
     getEstadoLed: getEstadoLed,
     saveFileNewStatus: saveFileNewStatus,
-    loadFileActuatorStatus: loadFileActuatorStatus
+    // loadFileActuatorStatus: loadFileActuatorStatus,
+    loadFileSwitches: loadFileSwitches
 }
