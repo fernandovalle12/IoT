@@ -1,0 +1,9 @@
+<div class="card" style="width: 100%; height: 10rem;">
+  <div class="card-body">
+      <h5 class="card-title"><%= sensor.name %></h5>
+      <h6 class="card-title"><p>Temperatura: <%= sensor.med[sensor.med.length - 1].temperatura %></p></h6>
+      <h6 class="card-title"><p>umidade: <%= sensor.med[sensor.med.length - 1].umidade %></p></h6>
+      <a href="/sensors/medicoes/<%= sensor.id %>" class="btn btn-primary">Histórico</a>
+      <a href="/sensors/grafic" class="btn btn-primary">Gráfico</a>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medições</title>
+  <%- include('imports'); -%>
+</head>
+<body>
+  <%- include('navbar'); -%>
+  <div class="container">
+    <div class="row">
+        <h1>Registro de medições dos sensores</h1>
+    </div>
+
+    <div class="row mb-2">
+        <a href="/" class="btn btn-success">RETORNAR AO MAPA</a>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Temperatura</th>
+                <th scope="col">Umidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% meds.forEach((med) => { %>
+                <tr>
+                  <td><%= med.temperatura %></td>
+                  <td><%= med.umidade %></td>
+                </tr>
+              <% }); %>
+              
+            </tbody>
+          </table>
+    </div>
+  </div>
+</body>
+</html>

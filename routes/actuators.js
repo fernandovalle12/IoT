@@ -4,8 +4,9 @@ var router = express.Router();
 // var uploader = require('../../middlewares/uploaderMiddleware');
 
 var switchService = require('../services/switchService');
+var sensoresService = require('../services/sersorService');
 
-router.get('/:id', function (req, res, next) {
+router.get('/change/:id', function (req, res, next) {
   let actuators = switchService.loadFileSwitches();
   let actuator = actuators.find((element) => element.id == req.params.id);
 
@@ -18,8 +19,18 @@ router.get('/:id', function (req, res, next) {
   var data = JSON.stringify(actuators);
   switchService.saveFileNewStatus(data);
   var switches = switchesService.getSwitches();
-  // res.render('', {title: "Switch", switches});
-  res.status(200).json({id: actuator.id, name: actuator.title, status: actuator.status});
+  
+  var switches = switchesService.getSwitches();
+  var sensores = sensoresService.getSensores();
+
+  res.render('index', { title: 'Switches', switches: switches, sensores});
+});
+
+router.get('/:id', function (req, res, next) {
+  let actuators = switchService.loadFileSwitches();
+  let actuator = actuators.find((element) => element.id == req.params.id);
+
+  res.json({id: actuator.id, name: actuator.title, status: actuator.status});
 });
 
 module.exports = router;

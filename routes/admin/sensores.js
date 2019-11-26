@@ -10,9 +10,20 @@ router.get('/', function (req, res, next) {
   res.render('admin/sensores/index', { sensores });
 });
 
-router.get('/create', function (req, res, next) {
+router.get('/create/:id', function (req, res, next) {
 
   res.render('admin/sensores/create');
+});
+
+router.get('/medicoes/:id', function (req, res, next) {
+  var sensores = sensorService.getSensores();
+  var sensor = sensores.find((sensor) => sensor.id == req.params.id);
+
+  res.render('medicoes', { title: sensor.name, meds: sensor.med });
+});
+
+router.get('/grafic', function (req, res, next) {
+  res.render('grafic');
 });
 
 router.post('/create', function (req, res, next) {
@@ -32,15 +43,20 @@ router.post('/create', function (req, res, next) {
   res.redirect('/admin/sensores');
 });
 
-router.get('/:id/add', function (req, res, next) {
+router.post('/:id/add', function (req, res, next) {
   var id = req.params.id;
-  console.log(id);
-  var t = req.query.temperatura;
-  var h = req.query.umidade;
-  console.log("teste = " + t);
-  sensorService.addMedicoes(id, { temperatura: t, umidade: h});
+  var t = req.body.temperature;
+  var h = req.body.humidity;
+  var hr = new Date();
+  sensorService.addMedicoes(id, { temperatura: t, umidade: h, hora: hr});
+  
+  var sensores = sensorService.loadFileSensores();
+  var sensor = sensores.find((sensor) => sensor.id == id);
 
-  res.status(401).json({ d: 'dsad'});
+  var temperatura = sensor.med[sensor.med.length - 1].temperatura;
+  var umidade = sensor.med[sensor.med.length - 1].umidade;
+
+  res.status(200).json({temperature: temperatura, humidity: umidade});
 });
 
 module.exports = router;

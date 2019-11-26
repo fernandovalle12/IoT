@@ -2,6 +2,9 @@
     <img class="card-img-top" src="/images/lampada<%= controlador.status %>.jpg" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title"><%= controlador.title %></h5>
-        <a href="/actuators/<%= controlador.id %>" class="btn btn-primary">Acionar</a>
+        <h6 class="card-title"><%= controlador.description %></h6>
+        <h6 class="card-title"></h6>
+
+        <a href="/actuators/change/<%= controlador.id %>" class="btn btn-primary">Acionar</a>
     </div>
 </div>

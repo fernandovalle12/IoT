@@ -15,6 +15,8 @@ var authRouter = require('./routes/auth');
 var verifyAuth = require('./middlewares/authMiddleware');
 var cartRouter = require('./routes/cart');
 var switchRouter = require('./routes/admin/switches');
+var testeRouter = require('./routes/teste');
+
 
 var app = express();
 
@@ -42,7 +44,9 @@ app.use('/cart', cartRouter);
 app.use('/admin/posts', /*[verifyAuth],*/  adminPostsRouter);
 app.use('/admin/products', [verifyAuth], adminProductsRouter);
 app.use('/admin/switches', [verifyAuth], switchRouter);
+app.use('/sensors', sensoresRouter);
 app.use('/admin/sensores', [verifyAuth], sensoresRouter);
+app.use('/teste', testeRouter);
 app.use('/products', productsRouter);
 app.use('/actuators', actuators);
 

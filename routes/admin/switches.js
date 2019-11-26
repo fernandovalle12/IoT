@@ -35,7 +35,6 @@ router.post('/:id', function(req, res, next) {
   var estadoAtual = switchService.getEstadoLed(req.params.id);
 
   newStatus.status = req.body.status;
-  console.log(estadoAtual)
   if(estadoAtual == 0){
     newStatus.status = 1
   } else {

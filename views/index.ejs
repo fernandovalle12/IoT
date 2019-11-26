@@ -8,12 +8,18 @@
     <%- include('navbar'); -%>
     
     <div class="container">
-      <div class="row">
-        <div>
+      <div class="row md-6">
+        <div class="col-sm">
           <% switches.forEach((controlador) => { %>
             <%- include('switch_card', { controlador: controlador }); -%>
           <% }); %>
         </div>
+        <div class="col-sm">
+          <% sensores.forEach((sensor) => { %>
+            <%- include('sensor_card', { sensor }); -%>
+          <% }); %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
